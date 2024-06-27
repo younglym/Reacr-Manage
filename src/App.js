@@ -52,7 +52,7 @@ class App extends Component {
     const { classes} = this.props;
     return (
       //<Paper className={classes.root}>
-      //<div>
+      <div>
         <Table >
         <TableHead>
             <TableRow>
@@ -64,15 +64,26 @@ class App extends Component {
               <TableCell>직업</TableCell>
             </TableRow>
           </TableHead>  
-
           <TableBody>
-              {
-                customers.map(c => {
-                return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/>  ); })
-              }
+             {customers.map(c => (
+               // return (
+                  <TableRow key={c.id} >
+                                  
+                  <TableCell>{c.id}</TableCell>
+                  <TableCell>{c.image}</TableCell>
+                  <TableCell>{c.name}</TableCell>
+                  <TableCell>{c.birthday}</TableCell>
+                  <TableCell>{c.gender}</TableCell>
+                  <TableCell>{c.job}</TableCell>
+                  </TableRow>    
+               )
+              )
+            }
+            
+            
           </TableBody>
         </Table>
-     //</div>   
+     </div>   
      //</Paper>
     );
   }
