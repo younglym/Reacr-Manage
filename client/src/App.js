@@ -20,10 +20,11 @@ const styles = theme => ({
   }
 })
 
+
 class App extends Component {
 
   state = {
-    customers: ""
+    customer: ""
   }
   componentDidMount() {
     this.callApi()
@@ -54,20 +55,19 @@ class App extends Component {
             </TableRow>
           </TableHead>  
           <TableBody>
-       
-          {this.state.customers ? this.state.customers.map(c => {
-            return (
-              <Customer 
-                id={c.id}
-                image={c.image}
-                name={c.name}
-                birthday={c.birthday}
-                gender={c.gender}
-                job={c.job}
-              />
-          )  }) : "11111"
-        }
-             
+             {this.state.customers ? this.state.customers.map(c => (
+               // return (
+                  <TableRow key={c.id} >                                  
+                  <TableCell>{c.id}</TableCell>
+                  <TableCell>{c.image}</TableCell>
+                  <TableCell>{c.name}</TableCell>
+                  <TableCell>{c.birthday}</TableCell>
+                  <TableCell>{c.gender}</TableCell>
+                  <TableCell>{c.job}</TableCell>
+                  </TableRow>    
+                )  
+               ) : ""}
+               
           </TableBody>
         </Table>
      </div>   
