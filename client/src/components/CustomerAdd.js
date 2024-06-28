@@ -1,5 +1,5 @@
 import React from 'react';
-import { Axios } from 'axios';
+import Axios from 'axios';
 
 class CustomerAdd extends React.Component {
     constructor(props) {
@@ -15,17 +15,26 @@ class CustomerAdd extends React.Component {
     }
 
     handleFormSubmit = (e) => {
-        e.preventDeafault()
+        e.preventDefault()
         this.addCustomer()
             .then((response) => {
                 console.log(response.data);
                 }
             )
+        this.setState({
+            file: null,
+            userName: '',
+            birthday: '',
+            gender: '',
+            job: '',
+            fileName: ''
+        })
+        window.location.reload();
     }
 
     handleFileChange = (e) => {
         this.setState({
-            file: e.target.file[0],
+            file: e.target.files[0],
             fileName: e.target.value
         })
     }
@@ -49,7 +58,7 @@ class CustomerAdd extends React.Component {
                 'content-type': 'multipart/form-data'
             }
         }
-        return post(url, formData, config);
+        return Axios.post(url, formData, config);
     }
 
     render() {
