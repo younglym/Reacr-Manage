@@ -1,4 +1,5 @@
 import React from  'react';
+//import CustomerDelete from './components/CustomerDelete';
 
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
@@ -14,6 +15,7 @@ class Customer extends React.Component {
                 <TableCell>{this.props.birthday}</TableCell>
                 <TableCell>{this.props.gender}</TableCell>
                 <TableCell>{this.props.job}</TableCell>
+
             </TableRow>
         </div>
         )

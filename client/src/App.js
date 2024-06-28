@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Customer from './components/Customer';
 import CustomerAdd from './components/CustomerAdd';
+import CustomerDelete from './components/CustomerDelete';
 import './App.css';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -78,20 +79,24 @@ class App extends Component {
                 <TableCell>생년월일</TableCell>
                 <TableCell>성별</TableCell>
                 <TableCell>직업</TableCell>
+                <TableCell>설정</TableCell>
               </TableRow>
             </TableHead>  
             <TableBody>
+          
               {this.state.customers ? this.state.customers.map(c => (
-                // return (
-                    <TableRow key={c.id} >                                  
-                    <TableCell>{c.id}</TableCell>
-                    <TableCell>{c.image}</TableCell>
-                    <TableCell>{c.name}</TableCell>
-                    <TableCell>{c.birthday}</TableCell>
-                    <TableCell>{c.gender}</TableCell>
-                    <TableCell>{c.job}</TableCell>
-                    </TableRow>    
-                  )  
+                  //return (
+                  //stateRefresh={this.props.stateRefresh}
+                    <TableRow key={c.id}>                                  
+                      <TableCell>{c.id}</TableCell>
+                      <TableCell>{c.image}</TableCell>
+                      <TableCell>{c.name}</TableCell>
+                      <TableCell>{c.birthday}</TableCell>
+                      <TableCell>{c.gender}</TableCell>
+                      <TableCell>{c.job}</TableCell>
+                      <TableCell><CustomerDelete stateRefresh={this.stateRefresh} id={c.id}/></TableCell>
+                    </TableRow> 
+                  )   
                 ) : 
                 <TableRow>
                   <TableCell colspan="6" align="center">
