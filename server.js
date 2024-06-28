@@ -27,7 +27,7 @@ const upload = multer({dest: './upload'});
 
 app.get('/api/customers', (req, res) => {
   connection.query(
-    "SELECT * FROM CUSTOMER",
+    "SELECT * FROM CUSTOMER ORDER BY id DESC",
     (err, rows, fields) => {
       res.send(rows);
       console.log(err);
