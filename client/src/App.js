@@ -12,6 +12,22 @@ import CircularProgress from '@mui/material/CircularProgress';
 import TableCell from '@mui/material/TableCell';
 import { withStyles } from '@mui/material/styles';
 
+//import { styled, alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+//import { fade } from '@mui/material/colorManipulator';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+
+import Box from '@mui/material/Box';
+
+
+
+
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -23,7 +39,28 @@ const styles = theme => ({
   },
   progress: {
     margin: theme.spacing.unit * 2,
+  },
+  grow: {
+    flexGrow:1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoings.up('sm')]: {
+      display: 'block',
+    },
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,    
   }
+
+
+
+
 })
 
 class App extends Component {
@@ -68,7 +105,31 @@ class App extends Component {
     const { classes} = this.props;
     return (
       //<Paper className={classes.root}>
-      <div>
+      <div className={classes.root}>
+        
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" ariak-lavel>
+              <MenuIcon />              
+            </IconButton>
+            <Typography className={classes.title} variant="h6" color="inheritant">
+              고객관리 시스템
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />                
+              </div>
+              <InputBase
+                placeholder="검색하기"
+                classes={{
+                  //root: classes.inputRoot,
+                  input: classes.inputInput,                    
+                }}
+              />
+            </div>
+          </Toolbar>
+        </AppBar>
         <div>
           <Table >
           <TableHead>
@@ -114,5 +175,5 @@ class App extends Component {
   }
 }
 
-export default App;
-//export default withStyles(styles)(App);
+//export default App;
+export default withStyles(styles)(App);

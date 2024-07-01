@@ -1,12 +1,14 @@
 import React from 'react';
 import Axios from 'axios';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
+//import Dialog from '@mui/material/Dialog';
+//import DialogActions from '@mui/material/DialogActions';
+//import DialogTitle from '@mui/material/DialogTitle';
+//import DialogContent from '@mui/material/DialogContent';
+
+import { Dialog, DialogActions, DialogTitle, DialogContent} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-//import { withtyles } from '@mui/material/styles';
+//import { withStyles } from '@mui/material/styles';
 import {ThemeProvider, withStyles} from '@mui/material/styles';
 
 const styles = theme => ({
@@ -106,13 +108,7 @@ class CustomerAdd extends React.Component {
                 <Dialog open={this.state.open} onClose={this.handleClose}>
                     <DialogTitle>고객 추가</DialogTitle>
                     <DialogContent>
-                        <label>
-                            
-                            
-                            <button variant="contained" color="primary" component="span" name="file">
-                                {this.state.fileName === "" ? "프로필 이미지 선택" : this.state.fileName}
-                            </button>
-                        </label>
+                        <input accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
                     
                         <TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange}/><br/>
                         <TextField label="생년월일" type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange}/><br/>
@@ -121,7 +117,7 @@ class CustomerAdd extends React.Component {
                     </DialogContent>
                     <DialogActions>
                         <button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</button>
-                        <button variant="outlined" color="primary" onClick={this.handleClose}>닫기</button>
+                        <button variant="outlined" color="primary" onClick={this.handleClickClose}>닫기</button>
                         
                     </DialogActions>
                     
@@ -131,5 +127,6 @@ class CustomerAdd extends React.Component {
     }
 }
 
+//export default withStyles(styles)(CustomerAdd);
 export default CustomerAdd;
-//<input className ={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
+//<input style={{display:"none"}}  accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
